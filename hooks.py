@@ -12,6 +12,10 @@ def h(options, buildout):
     #    content = f.replace('/usr/share/postlbs', '%s/share/postlbs' % options['location'])
     #    open(fp, 'w').write(content)
     print "Running cmake %s" % options["cmake-options"]
-    os.system("cmake %s" % options["cmake-options"])
+    os.makedirs('bld')
+    os.chdir('bld')
+    os.system("cmake %s .." % options["cmake-options"])
+    print "Building"
+    #os.system("make")
     os.chdir(cwd)
 
